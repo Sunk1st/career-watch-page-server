@@ -3,9 +3,13 @@ const express = require('express');
 
 const app = express();
 
-app.use((req, res, next) => {
-  console.log('firsst');
-  next();
+const videos = require('./lib/videos');
+
+app.use('/api/videos', (req, res, next) => {
+  res.status(200).json({
+    message: 'Video Data fetched successfully!',
+    videos: videos
+  })
 })
 
 app.use((req, res, next) => {
